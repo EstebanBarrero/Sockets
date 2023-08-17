@@ -19,13 +19,12 @@ public class InterfaceMarcoCliente extends JPanel {
 
         add(campo1);
 
-        miboton = new JButton("Enviar");
+        miboton = new JButton("Enviar!");
 
-        sendText miEvento = new sendText();
-        miboton.addActionListener(miEvento);
+        sendText sendText = new sendText();
+        miboton.addActionListener(sendText);
 
         add(miboton);
-
     }
 
     private class sendText implements ActionListener {
@@ -33,7 +32,7 @@ public class InterfaceMarcoCliente extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                Socket mySocket = new Socket("192.168.20.108",7777);
+                Socket mySocket = new Socket("172.20.10.3",7777);
 
                 DataOutputStream flowOutput = new DataOutputStream(mySocket.getOutputStream());							//Flujo de Salida de datos
                 flowOutput.writeUTF(campo1.getText());																	//Escribe en el Flujo lo que hay en el campo1
@@ -49,5 +48,4 @@ public class InterfaceMarcoCliente extends JPanel {
     private JTextField campo1;
 
     private JButton miboton;
-
 }
